@@ -1,0 +1,57 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+//Input several pairs of coordiantes (in the form "X Y") and type "0 0" when finished. Program will calculate the distance between.
+
+struct point {
+   int x;
+   int y;
+   struct point *next;
+}
+
+main() {
+
+   struct point *current;
+   struct point *previous;
+   struct point *beginning;
+
+   while(1){
+      beginning = (struct point *) malloc(sizeof(struct point));
+      scanf("%d %d", &beginning->x, &beginning->y);
+
+      if(beginning->x == 0 && beginning->y == 0){
+         break;
+      }   
+
+      beginning->next = NULL;
+      previous = beginning;
+      break;
+   }
+
+   while(1){
+      if(beginning->x == 0 && beginning->y ==0){
+         break;
+      }
+
+      current = (struct point *) malloc(sizeof(struct point));
+
+      scanf("%d %d", &current->x, &current->y);
+      current->next =  NULL;
+      previous->next = current;
+      previous = current;
+      if(current->x == 0 && current->y == 0){
+         break;
+      }
+   }
+
+   current = beginning;
+
+   while(current->x != 0 || current ->y !=0){
+      int dist;
+      dist = (current->x * current->x + current->y * current->y);
+      printf("%d\n", dist);
+      current = current->next;
+   }
+
+}
