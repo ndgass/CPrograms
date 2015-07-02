@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+main()
+{
+
+/*A small program that converts an image from RGB to greyscale*/
+
+int PPMMax;
+int r, g, b, grey, status;
+int row, column;
+
+printf("P2\n");
+scanf("P%d", &column);
+
+scanf("%d%d", &column, &row);
+printf("%d\n", column);
+printf("%d\n", row);
+
+scanf("%d", &PPMMax);
+printf("%d\n", 255);
+
+while(1){
+
+   status = scanf("%d%d%d", &r, &g, &b);
+   if(status == EOF){
+      break;
+      }
+   grey = ((r + g + b) * 255) / (3 * PPMMax);
+   printf("%d\n", grey);
+
+  }
+
+}
