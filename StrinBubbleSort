@@ -1,0 +1,59 @@
+/* Example: bubble sort strings in array */
+
+#include <stdio.h>  /* Need for standard I/O functions */
+#include <string.h> /* Need for string functions */
+#include <stdlib.h>
+
+#define NUM 25   /* number of strings */
+#define LEN 1000  /* max length of each string */
+
+main()
+{
+  char* Strings[NUM];
+  char temp[LEN];
+  int i, sorted;
+
+  printf("Please enter %d strings, one per line:\n", NUM);
+
+  for (i=0; i < NUM; i++) {
+
+    fgets(temp, LEN, stdin);
+
+    Strings[i] = malloc(strlen(temp) + 1); /* Plus one for the NULL at end */
+
+    strcpy(Strings[i], temp);
+
+  }
+
+  puts("\nHere are the strings in the order you entered:");
+
+  for(i = 0; i < NUM; i++){
+    printf("%s", Strings[i]);
+  }
+
+  do {
+    for(i = 1, sorted = 1; i < NUM; i++)
+    {
+      if(strcmp(Strings[i - 1], Strings[i]) > 0)
+      {
+        char* storage;
+        sorted = 0;
+        storage = Strings[i - 1];
+        Strings[i - 1] = Strings[i];
+        Strings[i] = storage;
+      }
+    }
+  } while (!sorted);        
+  
+  puts("\nIn alphabetical order, the strings are:");     
+
+  for(i = 0; i < NUM; i++){
+    printf("%s", Strings[i]);
+  }
+
+  for(i = 0; i < NUM; i++){
+    free(Strings[i]);
+  }
+  
+  return 0;
+}
