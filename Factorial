@@ -1,0 +1,40 @@
+
+#include <stdio.h>
+
+main()
+{
+
+  int factorial(int toFactor){
+    int temp;
+    if(toFactor == 0){
+      return 1;
+      }
+
+    else{
+      temp = (toFactor * factorial(toFactor - 1));
+      return temp;
+      }
+    }
+
+while(1){
+
+  int input;
+
+  printf("Enter a number: ");
+  scanf("%d", &input);
+  printf("%d! = ", input);
+
+  if(input == 0){
+    int temp;
+    temp = factorial(0);
+    printf("%d\n", temp);
+    break;
+    }
+  
+  int retValue;
+  retValue = factorial(input);
+  printf("%d\n", retValue);
+
+  }
+
+}
