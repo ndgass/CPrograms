@@ -1,0 +1,62 @@
+#include<stdio.h>
+#include<string.h>
+
+//A small program to practice recusion and recursion logic. Input a list of species and watch it go.
+
+void bedtimestory(char words[20][15], int current, int numbers){
+
+   int i = 0;
+
+   if(current == numbers -1){
+      printf("... who fell asleep.\n");
+      return;
+   }
+
+   if(current == 0){
+      printf("A %s couldn't sleep, so her mother told a story about a little %s,\n", &words[current][0], &words[current+1][0]);
+      for(i; i < current +1; i++){
+         printf("  ");
+      }
+      bedtimestory(words, current + 1, numbers);
+      printf("... and then the %s fell asleep.\n", &words[current][0]);
+   }
+
+   else{
+      printf("who couldn't sleep, so the %s's mother told a story about a little %s,\n", &words[current][0], &words[current+1][0]);
+      for(i; i < current +1; i++){
+         printf("  ");
+      }
+      bedtimestory(words, current + 1, numbers);
+      i = 0;
+      for(i; i < current; i++){
+         printf("  ");
+      }
+      printf("... and then the little %s fell asleep;\n", &words[current][0]);
+   }
+
+}
+
+main (){
+
+   char names[20][15]; //Up to 20 species, each up to 15 letters long (incl. NULL)
+   int num = 0;
+
+      while(1){
+      
+      fgets(&names[num][0], 15, stdin);
+      names[num][strlen(&names[num][0]) - 1] = '\0';
+      
+      if(strcmp(&names[num][0], "END") == 0){
+         break;
+      }
+
+      num++;
+      if(num == 20){
+         break;
+      }
+
+   }
+
+   bedtimestory(names, 0, num);
+
+}
