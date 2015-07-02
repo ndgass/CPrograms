@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+main(){
+
+int inputNumber, i, j;
+
+while(1){
+
+	printf("Number [1-100]: ?\n");
+
+	scanf("%d", &inputNumber);
+
+	if(inputNumber == 0) {
+		printf("Done\n");
+		break;
+		}
+	
+	int isPrime = 1;
+
+	for(i = 2; i < (inputNumber); i++){
+		j = (inputNumber % i);
+		if(j == 0){
+			printf("Non-prime, divisible by %d\n", i);
+			isPrime = 0;
+			break;
+			}
+		}
+
+	if(isPrime == 1){
+		printf("Prime\n");
+		}
+	}
+}
